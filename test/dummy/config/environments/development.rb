@@ -13,4 +13,7 @@ Dummy::Application.configure do
   config.consider_all_requests_local       = true
   config.action_view.debug_rjs             = true
   config.action_controller.perform_caching = false
+
+  # Enable serving of images, stylesheets, and javascripts from an asset server
+  config.asset_host = "http://assets.example.com"
 end
