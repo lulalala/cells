@@ -73,6 +73,7 @@ module Cells
 end
 
 require 'cell/rails'
+require 'cell/mailer'
 require 'cells/rails'
 require 'cell/deprecations'
 require 'cells/engines'

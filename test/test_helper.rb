@@ -13,6 +13,7 @@ test_app_dir  = File.join(gem_dir, 'test', 'app')
 require 'cells'
 
 Cell::Rails.append_view_path(File.join(test_app_dir, 'cells'))
+Cell::Mailer.append_view_path(File.join(test_app_dir, 'cells'))
 
 require "cell/test_case"
 # Extend TestCase.
@@ -34,6 +35,7 @@ end
 require File.join(test_app_dir, 'cells', 'bassist_cell')
 require File.join(test_app_dir, 'cells', 'trumpeter_cell')
 require File.join(test_app_dir, 'cells', 'bad_guitarist_cell')
+require File.join(test_app_dir, 'cells', 'newsletter_cell')
 
 require "haml"
 require "haml/template" # Thanks, Nathan!
