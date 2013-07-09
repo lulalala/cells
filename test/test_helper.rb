@@ -34,6 +34,7 @@ end
 require File.join(test_app_dir, 'cells', 'bassist_cell')
 require File.join(test_app_dir, 'cells', 'trumpeter_cell')
 require File.join(test_app_dir, 'cells', 'bad_guitarist_cell')
+require File.join(test_app_dir, 'cells', 'newsletter_cell')
 
 require "haml"
 require "haml/template" # Thanks, Nathan!

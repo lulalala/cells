@@ -6,7 +6,6 @@ module Cell
     include ActionController::RequestForgeryProtection
     
     abstract!
-    delegate :session, :params, :request, :config, :env, :url_options, :to => :parent_controller
     
     class << self
       def cache_store
@@ -34,6 +33,14 @@ module Cell
     def initialize(parent_controller)
       super
       @parent_controller = parent_controller
+
+      # Delegate methods to parent_controller only if the methods exists,
+      # because Rails can conditionally call a method (e.g. request) if it is defined
+      [:session, :params, :request, :config, :env, :url_options].each do |method_name|
+        if parent_controller.respond_to?(method_name)
+          self.class.delegate method_name, :to => :parent_controller
+        end
+      end
     end
     
     def cache_configured?
