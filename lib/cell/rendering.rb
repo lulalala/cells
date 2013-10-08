@@ -100,6 +100,24 @@ module Cell
         render_cell_state(cell, state, *args)
       end
     
+      def render_cells_for(name, state, *args)
+        args_for_single = args.dup
+        collection = args[1]
+
+        rendered = ''
+
+        collection.each do |item|
+          args_for_single[1] = item
+
+          cell = create_cell_for(name, *args_for_single)
+          yield cell if block_given?
+
+          rendered << render_cell_state(cell, state, *args_for_single)
+        end
+
+        return rendered.html_safe
+      end
+
     private
       def render_cell_state(cell, state, *args)
         cell.render_state(state, *args)

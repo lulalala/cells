@@ -26,6 +26,10 @@ module Cells
         ::Cell::Rails.render_cell_for(name, state, self, *args, &block)
       end
 
+      def render_cells(name, state, *args, &block)
+        ::Cell::Rails.render_cells_for(name, state, self, *args, &block)
+      end
+
       # Expires the cached cell state view, similar to ActionController::expire_fragment.
       # Usually, this method is used in Sweepers.
       # Beside the obvious first two args <tt>cell_name</tt> and <tt>state</tt> you can pass
@@ -65,6 +69,10 @@ module Cells
       # See Cells::Rails::ActionController#render_cell.
       def render_cell(name, state, *args, &block)
         ::Cell::Rails.render_cell_for(name, state, controller, *args, &block)
+      end
+
+      def render_cells(name, state, *args, &block)
+        ::Cell::Rails.render_cells_for(name, state, controller, *args, &block)
       end
     end
   end
